@@ -23,7 +23,13 @@ import com.example.tarea3compose.util.Screen
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.filled.*
 import androidx.compose.ui.modifier.modifierLocalOf
+import com.example.tarea3compose.ui.theme.ocupacion.ConsultaOcupaciones
+import com.example.tarea3compose.ui.theme.ocupacion.RegistroOcupaciones
+import com.example.tarea3compose.ui.theme.persona.ConsultaPersona
+import com.example.tarea3compose.ui.theme.persona.RegistroPersona
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +49,7 @@ class MainActivity : ComponentActivity() {
 
 
 
+/*
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MenuOcupacion() {
@@ -91,6 +98,7 @@ fun MenuOcupacion() {
         }
     }
 }
+*/
 
 
 
@@ -104,18 +112,18 @@ fun MyApp() {
             ConsultaPersona(clickRegistro = {navHostController.navigate(Screen.RegistroPersona.route)}, ClickConsultaOcup = {navHostController.navigate(Screen.ConsultaOcupaciones.route)})
         }
         composable(route = Screen.RegistroPersona.route){
-            RegistroPersona()
+            RegistroPersona(navHostController = navHostController)
         }
         composable(Screen.ConsultaOcupaciones.route){
             ConsultaOcupaciones(clickRegistroOcup = {navHostController.navigate(Screen.RegistroOcupaciones.route)})
         }
         composable(route = Screen.RegistroOcupaciones.route){
-            RegistroOcupaciones()
+            RegistroOcupaciones(navHostController = navHostController)
         }
     }
 }
 
-@Composable
+/*@Composable
 fun RegistroPersona(){
 
     val scaffoldState = rememberScaffoldState()
@@ -131,7 +139,7 @@ fun RegistroPersona(){
         scaffoldState = scaffoldState
 
     ) {
-        Column(modifier = Modifier.padding(8.dp)){
+        Column(modifier = Modifier.padding(it).padding(8.dp)){
             OutlinedTextField(
                 label = {
                     Text(text = "PersonaId")
@@ -220,9 +228,12 @@ fun RegistroPersona(){
             }
         }
     }
-}
+}*/
 
-@Composable
+
+
+
+/*@Composable
 fun RegistroOcupaciones(){
 
     val scaffoldState = rememberScaffoldState()
@@ -236,7 +247,7 @@ fun RegistroOcupaciones(){
         },
         scaffoldState = scaffoldState
     ) {
-        Column(modifier = Modifier.padding(8.dp)){
+        Column(modifier = Modifier.padding(it).padding(8.dp)){
             OutlinedTextField(
                 label = {
                     Text(text = "OcupacionId")
@@ -292,9 +303,13 @@ fun RegistroOcupaciones(){
             }
         }
     }
-}
+}*/
 
-@Composable
+
+
+
+
+/*@Composable
 fun ConsultaPersona(clickRegistro:()->Unit, ClickConsultaOcup:()->Unit){
 
     val scaffoldState = rememberScaffoldState()
@@ -315,7 +330,7 @@ fun ConsultaPersona(clickRegistro:()->Unit, ClickConsultaOcup:()->Unit){
         },
         scaffoldState = scaffoldState
     ) {
-        Column(modifier = Modifier.padding(8.dp)) {
+        Column(modifier = Modifier.padding(it).padding(8.dp)) {
 
             OutlinedButton(
                 onClick = {
@@ -336,16 +351,16 @@ fun ConsultaPersona(clickRegistro:()->Unit, ClickConsultaOcup:()->Unit){
         }
     }
 
-}
+}*/
 
-@Composable
+/*@Composable
 fun RowNombre(nombre: String){
     Row(){
         Text("El nombre es: $nombre")
 
 
     }
-}
+}*/
 
 @Composable
 fun RowOcupaciones(nombre: String){
@@ -365,7 +380,9 @@ fun DefaultPreview() {
 }
 
 
-@Composable
+
+
+/*@Composable
 fun ConsultaOcupaciones(clickRegistroOcup:()->Unit){
 
    val scaffoldState = rememberScaffoldState()
@@ -386,7 +403,7 @@ fun ConsultaOcupaciones(clickRegistroOcup:()->Unit){
         },
         scaffoldState = scaffoldState
     ) {
-        Column(modifier = Modifier.padding(8.dp)) {
+        Column(modifier = Modifier.padding(it).padding(8.dp)) {
 
 
                 val lista = listOf("Ingeniero", "Administrador", "Contable", "Licenciado")
@@ -398,4 +415,5 @@ fun ConsultaOcupaciones(clickRegistroOcup:()->Unit){
             }
         }
     }
-}
+}*/
+
