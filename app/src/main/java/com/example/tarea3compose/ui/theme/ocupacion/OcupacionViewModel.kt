@@ -18,6 +18,7 @@ class OcupacionViewModel @Inject constructor(
 ):ViewModel() {
 
     var nombre by mutableStateOf("")
+    var ocupacion = ocupacionRepository.getList()
 
     fun Guardar(){
         viewModelScope.launch {

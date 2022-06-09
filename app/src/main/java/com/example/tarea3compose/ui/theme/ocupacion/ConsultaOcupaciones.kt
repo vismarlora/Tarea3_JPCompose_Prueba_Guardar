@@ -9,12 +9,15 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Work
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tarea3compose.RowOcupaciones
 
 @Composable
-fun ConsultaOcupaciones(clickRegistroOcup:()->Unit){
+fun ConsultaOcupaciones(viewModel: OcupacionViewModel = hiltViewModel(), clickRegistroOcup:()->Unit){
 
     val scaffoldState = rememberScaffoldState()
 
@@ -34,14 +37,16 @@ fun ConsultaOcupaciones(clickRegistroOcup:()->Unit){
         },
         scaffoldState = scaffoldState
     ) {
-        Column(modifier = Modifier.padding(it).padding(8.dp)) {
+        Column(modifier = Modifier
+            .padding(it)
+            .padding(8.dp)) {
 
 
-            val lista = listOf("Ingeniero", "Administrador", "Contable", "Licenciado")
+            val lista = viewModel.ocupacion.collectAsState(initial = emptyList())
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                items(lista) { ocupacion ->
-                    RowOcupaciones(ocupacion)
+                items(lista.value) { ocupacion ->
+                    RowOcupaciones(ocupacion = ocupacion)
                 }
             }
         }
